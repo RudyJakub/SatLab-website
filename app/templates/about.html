@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="mt-4 p-5 bg-dark text-white rounded text-center" style="--bs-bg-opacity: .0;">
+    <h1>KIM JESTEŚMY?</h1>
+    <p style="font-size: large;">To powstałe w kwietniu 2023 roku koło naukowe SatLab AGH, działające pod egidą Centrum Technologii Kosmicznych Akademii Górniczo-Hutniczej w Krakowie. W skład zespołu liczącego kilkudziesięciu członków, wchodzą osoby ze środowiska uczelnianego, studiujące na różnych wydziałach i wnoszące do zespołu wszechstronne umiejętności, wiedzę i doświadczenie. Drużyna została podzielona na odpowiednie sekcje, odpowiedzialne za poszczególne podsystemy satelity, takie jak komputer pokładowy (OBC), kontrola orientacji (ADCS), instrumenty naukowe (Payload), zasilanie (EPS) czy komunikacja (COMMS).</p>
+    <p style="font-size: large;">Praca realizowana jest w oparciu o standardy i metody stosowane w profesjonalnej gałęzi przemysłu kosmicznego.</p>
+
+    <div class="container">
+        <img src="{{ url_for('static', path='img/TVN-1.png') }}" class="img-fluid rounded" alt="SatLab Team">
+    </div>
+</div>
+{% endblock %}
