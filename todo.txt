@@ -1,0 +1,4 @@
+media files
+testy bazy danych
+dokończyć modele
+przesyłanie zdjęć, zapis url w bazie danych
