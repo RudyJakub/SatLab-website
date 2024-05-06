@@ -1,5 +1,3 @@
-version: '3'
-
 services:
   web:
     build: .
@@ -9,3 +7,19 @@ services:
     volumes:
       - ./app:/app
     restart: on-failure
+    depends_on:
+      - db
+  db:
+    image: mysql:8.0
+    ports:
+      - "3306:3306"
+    restart: always
+    environment:
+      MYSQL_DATABASE: satlab
+      MYSQL_ROOT_PASSWORD: 123
+    volumes:
+      - db:/var/lib/mysql
+
+volumes:
+  db:
+    driver: local
