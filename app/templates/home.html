@@ -1,8 +1,125 @@
- {% extends "base.html" %}
+{% extends "base.html" %} {% block content %}
+<!-- Hero section -->
+<section class="hero">
+  <h1>HYPE - the smallest Polish </br> satellite from AGH</h1>
+  <h2>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+    tempor</br> incididunt ut labore et dolore magna aliqua.
+  </h2>
 
- {% block content %}
- <div class="mt-4 p-5 bg-dark text-white rounded" style="--bs-bg-opacity: .0;">
-    <h1 style="text-align: center;">TAK, NAPRAWDĘ LECIMY W KOSMOS!</h1>
-    <p></p>
+  <!-- Hero Button container -->
+  <div class="btn-container">
+    <button class="hero-btn"><a href="#">Informations</a></button>
+    <button class="hero-btn"><a href="#">Projects</a></button>
+    <button class="hero-btn"><a href="#">Cooperate with us</a></button>
   </div>
- {% endblock %}
+</section>
+
+<!-- Mission description -->
+<section class="mission-container">
+  <div class="text-wrapper">
+    <h1>MISSION DESCRIPTION</h1>
+    <p>
+      From the beginning of its existence, the Polish space sector has been
+      based mainly on the activities of not only experienced experts, but above
+      all students, willing to cross borders and prove that ideas created in our
+      country have their place above the Kármán Line. This resulted in the
+      creation of not only several full-fledged satellites, but also numerous
+      projects, ventures and research groups, whose members over time became the
+      pillars of this industry in Poland. Young scientists and engineers from
+      AGH, fascinated by the world of technology, wanting to inspire others by
+      implementing innovative missions, therefore join the space race, creating
+      one of the smallest and at the same time the most innovative devices that
+      has ever been launched into orbit by the academic community! The team will
+      not only conduct its own orbital research, but also lay the foundations
+      for the professional development of future Polish specialists in the field
+      of space and satellite engineering at the AGH University of Science and
+      Technology in Krakow!
+    </p>
+  </div>
+</section>
+
+<!-- SLIDER WIDE NO1 -->
+<section class="slider-container">
+  <div class="slider-wrapper">
+    <div class="slider">
+      <!-- Slides - follow logic of id as slide number -->
+      <div class="slide" id="slide-1">
+        <h2>HYPE - the smallest polish satellite from AGH</h2>
+        <p>
+          Sed risus ultricies tristique nulla aliquet enim tortor at auctor urna
+          nunc id cursus metus aliquam eleifend mi in nulla.
+        </p>
+
+        <img
+          src="https://images.unsplash.com/photo-1656464868371-602be27fd4c2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&q=80"
+          alt="3D rendering of an imaginary orange planet in space"
+        />
+      </div>
+      <div class="slide" id="slide-2">
+        <h2>HYPE - the smallest polish satellite from AGH</h2>
+        <p>
+          Sed risus ultricies tristique nulla aliquet enim tortor at auctor urna
+          nunc id cursus metus aliquam eleifend mi in nulla.
+        </p>
+
+        <img
+          src="https://images.unsplash.com/photo-1657586640569-4a3d4577328c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&q=80"
+          alt="3D rendering of an imaginary green planet in space"
+        />
+      </div>
+      <div class="slide" id="slide-3">
+        <h2>HYPE - the smallest polish satellite from AGH</h2>
+        <p>
+          Sed risus ultricies tristique nulla aliquet enim tortor at auctor urna
+          nunc id cursus metus aliquam eleifend mi in nulla.
+        </p>
+
+        <img
+          src="https://images.unsplash.com/photo-1656077217715-bdaeb06bd01f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&q=80"
+          alt="3D rendering of an imaginary blue planet in space"
+        />
+      </div>
+    </div>
+    <div class="slider-nav">
+      <a href="#slide-1"></a>
+      <a href="#slide-2"></a>
+      <a href="#slide-3"></a>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDER THIN NO1 -->
+<section class="th-carousel-container">
+  <div class="th-sldier-text-content">
+    <span>DON'T MISS ONE</span>
+    <h1>NEWS FROM SATLAB</h1>
+
+    <!-- Carousel -->
+    <div class="th-wrapper">
+      <div class="carousel">
+        <img
+          src="https://images.unsplash.com/photo-1656077217715-bdaeb06bd01f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&q=80"
+          alt="3D rendering of an imaginary blue planet in space"
+        />
+        <img
+          src="https://images.unsplash.com/photo-1656464868371-602be27fd4c2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&q=80"
+          alt="3D rendering of an imaginary orange planet in space"
+        />
+        <img
+          src="https://images.unsplash.com/photo-1657586640569-4a3d4577328c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&q=80"
+          alt="3D rendering of an imaginary green planet in space"
+        />
+        <img
+          src="https://images.unsplash.com/photo-1656464868371-602be27fd4c2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&q=80"
+          alt="3D rendering of an imaginary orange planet in space"
+        />
+        <img
+          src="https://images.unsplash.com/photo-1656077217715-bdaeb06bd01f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&q=80"
+          alt="3D rendering of an imaginary blue planet in space"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

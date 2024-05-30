@@ -1,120 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>satlab</title>
-    <style>
-      body, html {
-        font-family: 'Courier New', monospace;
-        padding: 0;
-        margin: 0;
-        background-image: url("{{ url_for('static', path='img/background.jpg') }}");
-        image-rendering: -webkit-optimize-contrast;
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Satlab AGH</title>
 
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-attachment: fixed;
-      }
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', path='css/style.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', path='css/home.css') }}"
+    />
+    <link
+      rel="shortcut icon"
+      href="{{ url_for('static', path='img/favicon.ico') }}"
+      type="image/x-icon"
+    />
+    <link
+      rel="icon"
+      href="{{ url_for('static', path='img/favicon.ico') }}"
+      type="image/x-icon"
+    />
+    <!-- <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    /> -->
 
-      .offcanvas {
-        bottom: initial;
-      }
-    </style>
-    <link rel="shortcut icon" href="{{ url_for('static', path='img/favicon.ico') }}" type="image/x-icon">
-    <link rel="icon" href="{{ url_for('static', path='img/favicon.ico') }}" type="image/x-icon">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
+    <!-- Tailwind css -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
-    <div class="offcanvas offcanvas-start text-bg-dark opacity-75" style="font-size: large;" id="offcanvas">
-      <div class="offcanvas-header">
-        <button type="button" class="btn" data-bs-dismiss="offcanvas"></button>
-      </div>
-      <div style="margin-top: 5px; margin-left: 10px;" class="offcanvas-body" data-bs-dismiss="offcanvas">
-        <ul class="navbar-nav ms-auto"" style="margin-right: 30; color:white;">
-          <li class="nav-item" style="margin-right: 9px; margin-top: 3px;">
-              <a class="nav-link active" href="#">Kontakt</a>
-          </li>
-          <li class="nav-item" style="margin-right: 9px; margin-top: 3px;">
-              <a class="nav-link active" href="#">Galeria</a>
-          </li>
-          <li class="nav-item" style="margin-right: 9px; margin-top: 3px;">
-              <a class="nav-link active" href="{{ url_for('about') }}">Informacje</a>
-          </li>
-          <li class="nav-item" style="margin-right: 9px; margin-top: 3px;">
-              <a class="nav-link active" href="#">Członkowie</a>
-          </li>
-          <li class="nav-item" style="margin-right: 9px; margin-top: 3px;">
-              <a class="nav-link active" href="#">Dokumentacja</a>
-          </li>
-          <li class="nav-item" style="margin-right: 9px; margin-top: 3px;">
-              <a class="nav-link active" href="#">Aktualności</a>
-          </li>
-          <li class="nav-item" style="margin-right: 9px; margin-top: 3px;">
-              <a class="nav-link active" href="#">Sekcje</a>
-          </li>
-          <li class="nav-item" style="margin-right: 9px; margin-top: 3px;">
-              <a class="nav-link active" href="#">Projekty</a>
-          </li>
-          <li class="nav-item" style="margin-right: 9px; margin-top: 3px;">
-              <a class="nav-link active" href="#">Współpraca</a>
-          </li>
-        </ul>
-      </div>
-    </div>
+    <!-- FontAwesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+  </head>
+  <body>
+    {% include "menu.html" %}
 
-    <nav class="navbar navbar-fixed-top navbar-expand-xl bg-dark navbar-dark" style="--bs-bg-opacity: .3; font-size: medium;">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="{{ url_for('home') }}">
-            <img src="{{ url_for('static', path='img/logo.png')}}" alt="Logo" style="width: 40px;" class="rounded-pill">
-            <h3 style="display: inline; margin-left: 10px;">
-              SATLAB
-            </h3>
-          </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="collapsibleNavbar">
-          <ul class="navbar-nav ms-auto"" style="margin-right: 30; color:white;">
-            <li class="nav-item" style="margin-right: 9px; margin-top: 3px;">
-                <a class="nav-link active" href="#">Kontakt</a>
-            </li>
-            <li class="nav-item" style="margin-right: 9px; margin-top: 3px;">
-                <a class="nav-link active" href="#">Galeria</a>
-            </li>
-            <li class="nav-item" style="margin-right: 9px; margin-top: 3px;">
-                <a class="nav-link active" href="{{ url_for('about') }}">Informacje</a>
-            </li>
-            <li class="nav-item" style="margin-right: 9px; margin-top: 3px;">
-                <a class="nav-link active" href="#">Członkowie</a>
-            </li>
-            <li class="nav-item" style="margin-right: 9px; margin-top: 3px;">
-                <a class="nav-link active" href="#">Dokumentacja</a>
-            </li>
-            <li class="nav-item" style="margin-right: 9px; margin-top: 3px;">
-                <a class="nav-link active" href="#">Aktualności</a>
-            </li>
-            <li class="nav-item" style="margin-right: 9px; margin-top: 3px;">
-                <a class="nav-link active" href="#">Sekcje</a>
-            </li>
-            <li class="nav-item" style="margin-right: 9px; margin-top: 3px;">
-                <a class="nav-link active" href="#">Projekty</a>
-            </li>
-            <li class="nav-item" style="margin-right: 9px; margin-top: 3px;">
-                <a class="nav-link active" href="#">Współpraca</a>
-            </li>
-          </ul>
-        </div>
-        </div>
-      </nav>
+    <div class="">{% block content %} {% endblock %}</div>
 
-      <div class="container">
-        {% block content %}
-        {% endblock %}
-      </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> -->
+  </body>
 </html>
