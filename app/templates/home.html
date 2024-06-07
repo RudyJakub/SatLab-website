@@ -1,25 +1,25 @@
 {% extends "base.html" %} {% block content %}
 <!-- Hero section -->
 <section class="hero">
-  <h1>HYPE - the smallest Polish </br> satellite from AGH</h1>
-  <h2>
+  <h1 class="fade text-[70px] lg:text-[5rem] xl:text-[7rem]"><span class="text-[#2ab5b6]">HYPE</span> - the smallest Polish </br> satellite from AGH</h1>
+  <h2 class="fadeLong">
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
     tempor</br> incididunt ut labore et dolore magna aliqua.
   </h2>
 
   <!-- Hero Button container -->
   <div class="btn-container">
-    <button class="hero-btn"><a href="#">Informations</a></button>
-    <button class="hero-btn"><a href="#">Projects</a></button>
-    <button class="hero-btn"><a href="#">Cooperate with us</a></button>
+    <button class="fade hero-btn text-[14px] sm:text-[20px] xl:text-[30px] 2xl:text-[36px]"><a href="#informations">Informations</a></button>
+    <button class="fade hero-btn text-[14px] sm:text-[20px] xl:text-[30px] 2xl:text-[36px]"><a href="#projects">Projects</a></button>
+    <button class="fade hero-btn text-[14px] sm:text-[20px] xl:text-[30px] 2xl:text-[36px]"><a href="#">Cooperate with us</a></button>
   </div>
 </section>
 
 <!-- Mission description -->
-<section class="mission-container">
+<section class="mission-container" id="informations">
   <div class="text-wrapper">
-    <h1>MISSION DESCRIPTION</h1>
-    <p>
+    <h1 class="fade text-[45px] xl:text-[75px]"><span class="text-[#2ab5b6]">MISSION</span> DESCRIPTION</h1>
+    <p class="fade text-16px lg:text-[25px] xl-[30px] leading-relaxed" direction="left">
       From the beginning of its existence, the Polish space sector has been
       based mainly on the activities of not only experienced experts, but above
       all students, willing to cross borders and prove that ideas created in our
@@ -40,13 +40,13 @@
 </section>
 
 <!-- SLIDER WIDE NO1 -->
-<section class="slider-container">
+<section class="slider-container" id="projects">
   <div class="slider-wrapper">
     <div class="slider">
       <!-- Slides - follow logic of id as slide number -->
       <div class="slide" id="slide-1">
-        <h2>HYPE - the smallest polish satellite from AGH</h2>
-        <p>
+        <h2 class="fade"><span class="text-[#2ab5b6]">HYPE</span> - the smallest polish satellite from AGH</h2>
+        <p class="fade" direction="left">
           Sed risus ultricies tristique nulla aliquet enim tortor at auctor urna
           nunc id cursus metus aliquam eleifend mi in nulla.
         </p>
@@ -86,40 +86,64 @@
       <a href="#slide-2"></a>
       <a href="#slide-3"></a>
     </div>
+    <div class="slider-arrows">
+      <a class="arrow-left"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></a>
+      <a class="arrow-right"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg></a>
+    </div>
   </div>
 </section>
 
 <!-- SLIDER THIN NO1 -->
-<section class="th-carousel-container">
-  <div class="th-sldier-text-content">
-    <span>DON'T MISS ONE</span>
-    <h1>NEWS FROM SATLAB</h1>
+<section class="th-carousel p-0 md:p-48 bg-[#f7f7f7]">
+  <div class="py-12">
+    <span class="fade text-3xl">DON'T MISS ONE</span>
+    <h2 class="fade text-6xl md:text-8xl">NEWS FROM <span class="text-[#2ab5b6]">SATLAB</span></h2>
+  </div>
+  <div class="block">
+    <div class="bg-green js-flickity"
+      data-flickity-options='{ "wrapAround": true }'>
 
-    <!-- Carousel -->
-    <div class="th-wrapper">
-      <div class="carousel">
-        <img
-          src="https://images.unsplash.com/photo-1656077217715-bdaeb06bd01f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&q=80"
-          alt="3D rendering of an imaginary blue planet in space"
-        />
-        <img
-          src="https://images.unsplash.com/photo-1656464868371-602be27fd4c2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&q=80"
-          alt="3D rendering of an imaginary orange planet in space"
-        />
+
+      <div class="slider-cell w-full w-full md:w-full lg:w-[66%] md:mr-12"><img
+        src="https://images.unsplash.com/photo-1657586640569-4a3d4577328c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&q=80"
+        alt="3D rendering of an imaginary green planet in space"
+      />
+        <p class="slide-text">Lorem ipsum</p>
+      </div>
+      <div class="slider-cell w-full w-full md:w-full lg:w-[66%] md:mr-12">
         <img
           src="https://images.unsplash.com/photo-1657586640569-4a3d4577328c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&q=80"
           alt="3D rendering of an imaginary green planet in space"
         />
+        <p class="slide-text">Lorem ipsum</p>
+      </div>
+      <div class="slider-cell w-full w-full md:w-full lg:w-[66%] md:mr-12">
         <img
-          src="https://images.unsplash.com/photo-1656464868371-602be27fd4c2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&q=80"
-          alt="3D rendering of an imaginary orange planet in space"
+          src="https://images.unsplash.com/photo-1657586640569-4a3d4577328c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&q=80"
+          alt="3D rendering of an imaginary green planet in space"
         />
+        <p class="slide-text">Lorem ipsum</p>
+      </div>
+      <div class="slider-cell w-full w-full md:w-full lg:w-[66%] md:mr-12">
         <img
-          src="https://images.unsplash.com/photo-1656077217715-bdaeb06bd01f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&q=80"
-          alt="3D rendering of an imaginary blue planet in space"
+          src="https://images.unsplash.com/photo-1657586640569-4a3d4577328c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&q=80"
+          alt="3D rendering of an imaginary green planet in space"
         />
+        <p class="slide-text">Lorem ipsum</p>
+      </div>
+      <div class="slider-cell w-full w-full md:w-full lg:w-[66%] md:mr-12">
+        <img
+          src="https://images.unsplash.com/photo-1657586640569-4a3d4577328c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&q=80"
+          alt="3D rendering of an imaginary green planet in space"
+        />
+        <p class="slide-text">Lorem ipsum</p>
       </div>
     </div>
   </div>
+</section>
+
+<!-- Gallery section -->
+<section>
+  
 </section>
 {% endblock %}
