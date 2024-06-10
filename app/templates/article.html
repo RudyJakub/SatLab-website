@@ -1,0 +1,12 @@
+{% extends "base.html" %} {% block content %}
+
+<section class="mission-container">
+    <div class="text-wrapper">
+      <h1 class="fade text-[45px] xl:text-[75px]">{{ article.title }}</h1>
+      <p class="fade text-16px lg:text-[25px] xl-[30px] leading-relaxed" direction="left">
+        {{ article.content }}
+      </p>
+    </div>
+</section>
+  
+{% endblock %}

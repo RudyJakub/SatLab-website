@@ -103,41 +103,18 @@
     <div class="bg-green js-flickity"
       data-flickity-options='{ "wrapAround": true }'>
 
+      {% for article in articles %}
 
       <div class="slider-cell w-full w-full md:w-full lg:w-[66%] md:mr-12"><img
         src="https://images.unsplash.com/photo-1657586640569-4a3d4577328c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&q=80"
         alt="3D rendering of an imaginary green planet in space"
       />
-        <p class="slide-text">Lorem ipsum</p>
+      <a href="{{ url_for('article_page', news_id=article.id)}}">
+        <p class="slide-text">{{ article.title }}</p>
+      </a>
       </div>
-      <div class="slider-cell w-full w-full md:w-full lg:w-[66%] md:mr-12">
-        <img
-          src="https://images.unsplash.com/photo-1657586640569-4a3d4577328c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&q=80"
-          alt="3D rendering of an imaginary green planet in space"
-        />
-        <p class="slide-text">Lorem ipsum</p>
-      </div>
-      <div class="slider-cell w-full w-full md:w-full lg:w-[66%] md:mr-12">
-        <img
-          src="https://images.unsplash.com/photo-1657586640569-4a3d4577328c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&q=80"
-          alt="3D rendering of an imaginary green planet in space"
-        />
-        <p class="slide-text">Lorem ipsum</p>
-      </div>
-      <div class="slider-cell w-full w-full md:w-full lg:w-[66%] md:mr-12">
-        <img
-          src="https://images.unsplash.com/photo-1657586640569-4a3d4577328c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&q=80"
-          alt="3D rendering of an imaginary green planet in space"
-        />
-        <p class="slide-text">Lorem ipsum</p>
-      </div>
-      <div class="slider-cell w-full w-full md:w-full lg:w-[66%] md:mr-12">
-        <img
-          src="https://images.unsplash.com/photo-1657586640569-4a3d4577328c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&q=80"
-          alt="3D rendering of an imaginary green planet in space"
-        />
-        <p class="slide-text">Lorem ipsum</p>
-      </div>
+      {% endfor %}
+
     </div>
   </div>
 </section>

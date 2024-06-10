@@ -1,0 +1,32 @@
+{% extends "admin/base.html" %} {% block content %}
+<div class="container-sm mt-5">
+    <label for="comment">Title:</label>
+    <textarea class="form-control" rows="1" id="title" name="text"></textarea>
+</div>
+<div class="container mt-3">
+    <label for="comment">Content:</label>
+    <textarea class="form-control" rows="6" id="content" name="text"></textarea>
+</div>
+<div class="container mt-3">
+    <button id="postButton" type="button" class="btn btn-primary">Post Article</button>
+</div>
+
+<script> 
+    document.getElementById("postButton").addEventListener("click", () => {
+        data = {
+                "title": document.getElementById("title").value,
+                "content": document.getElementById("content").value,
+                "hidden": true
+            }
+        fetch("{{ url_for('create_article')}}", {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {
+                "Content-Type": "application/json",
+            },
+        }).then(() => {
+            location.replace("{{ url_for('admin_page') }}")
+        })
+    })
+</script>
+{% endblock %}

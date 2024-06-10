@@ -1,0 +1,49 @@
+{% extends "admin/base.html" %} {% block content %}
+
+<div class="container mt-3">
+  <h2>Editor Panel</h2>
+  <br>
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" data-bs-toggle="tab" href="#home">Manage Articles</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-bs-toggle="tab" href="#menu2">Manage Images</a>
+    </li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+      <!-- Manage Articles-->
+    <div id="home" class="container tab-pane active"><br>
+      <h3>Manage articles (click to edit)</h3>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Hidden</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for article in articles %}
+          <tr>
+            <td>{{ article.id }}</td>
+            <td><a href="{{ url_for('edit_article_page', article_id=article.id) }}">{{ article.title }}</a></td>
+            <td>{{ article.hidden }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <div id="menu2" class="container tab-pane fade"><br>
+      <h3>Manage Images</h3>
+      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}
