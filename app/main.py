@@ -1,21 +1,30 @@
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request, UploadFile, File, Depends
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from sqlalchemy import text
 from database import session, engine
 from schemas import Article
 import models
+from typing import List, Optional
 
 app = FastAPI()
 app.mount("/static", StaticFiles(directory="static"), name="static")
 app.templates = Jinja2Templates(directory="templates")
 models.Base.metadata.create_all(bind=engine)
 
+# session.execute(text('DROP TABLE articles;'))
+
 @app.get("/")
 async def home(request: Request):
     all_articles = session.query(models.Article).filter(models.Article.hidden==False).all()[::-1]
     return app.templates.TemplateResponse(
         request=request, name="home.html", context={"articles": all_articles}
+    )
+
+@app.get("/about")
+def about(request: Request):
+    return app.templates.TemplateResponse(
+        request=request, name="about.html"
     )
 
 @app.get("/news/{news_id}")
@@ -25,13 +34,9 @@ async def article_page(request: Request, news_id: int):
         request=request, name="article.html", context={"article": article}
     )
 
-@app.get("/about")
-def about(request: Request):
-    return app.templates.TemplateResponse(
-        request=request, name="about.html"
-    )
 
 ### ADMIN ROUTES ###
+
 @app.get("/admin")
 async def admin_page(request: Request):
     all_articles = session.query(models.Article).all()
@@ -46,34 +51,39 @@ async def edit_article_page(request: Request, article_id: int):
         request=request, name="admin/edit_article.html", context={"article": article}
     )
 
-@app.get("/admin/create-article")
-async def create_article_page(request: Request):
-    return app.templates.TemplateResponse(
-        request=request, name="admin/create_article.html"
-    )
 
 ### ARTICLE API ROUTES ###
+
 @app.post("/api/articles")
 async def create_article(article: Article):
-    new_article = models.Article(title=article.title, content=article.content, hidden=True)
+    new_article = models.Article(title=article.title, content=article.content, hidden=article.hidden, image="")
     session.add(new_article)
     session.commit()
     return "created"
 
-@app.get("/api/articles/all")
-async def get_articles():
-    all_articles = session.query(models.Article).all()
-    return all_articles
-
 @app.delete("/api/articles/delete/{article_id}")
 async def delete_article(article_id: int):
     session.query(models.Article).filter(models.Article.id==article_id).delete()
+    session.commit()
     return "deleted"
 
-@app.put("/api/articles/update/{article_id}")
-async def update_article(article: Article, article_id: int):
-    session.query(models.Article).filter(models.Article.id==article_id).update(
-        { "title": article.title, "content": article.content, "hidden": article.hidden }
-    )
+@app.post("/api/articles/update/{article_id}")
+def update_article(article_id: int, article: Article = Depends(), files: List[UploadFile] = File(None)):
+    if files:
+        file = files[0]
+        file_path = f"./static/article_images/{file.filename}"
+        try:
+            with open(file_path, "wb") as f:
+                f.write(file.file.read())
+        except Exception as e:
+            return {"error saving image": e.args}
+        session.query(models.Article).filter(models.Article.id==article_id).update(
+            { "title": article.title, "content": article.content, "hidden": article.hidden, "image": {file.filename} }
+        )
+        session.commit()
+    else:
+        session.query(models.Article).filter(models.Article.id==article_id).update(
+            { "title": article.title, "content": article.content, "hidden": article.hidden}
+        )
+        session.commit() 
     return "updated"
-

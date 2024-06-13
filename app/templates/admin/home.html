@@ -1,7 +1,6 @@
 {% extends "admin/base.html" %} {% block content %}
 
 <div class="container mt-3">
-  <h2>Editor Panel</h2>
   <br>
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
@@ -9,7 +8,7 @@
       <a class="nav-link active" data-bs-toggle="tab" href="#home">Manage Articles</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" data-bs-toggle="tab" href="#menu2">Manage Images</a>
+      <a class="nav-link" data-bs-toggle="tab" href="#menu2">Create New Article</a>
     </li>
   </ul>
 
@@ -23,7 +22,10 @@
           <tr>
             <th>ID</th>
             <th>Title</th>
+            <th>Date Created</th>
+            <th>Date Updated</th>
             <th>Hidden</th>
+            <th>Delete</th>
           </tr>
         </thead>
         <tbody>
@@ -31,7 +33,10 @@
           <tr>
             <td>{{ article.id }}</td>
             <td><a href="{{ url_for('edit_article_page', article_id=article.id) }}">{{ article.title }}</a></td>
+            <td>{{ article.created_at }} UTC</td>
+            <td>{{ article.updated_at }} UTC</td>
             <td>{{ article.hidden }}</td>
+            <td><button class="button btn-danger" onclick="deleteArticle('{{ article.id }}')">X</button></td>
           </tr>
           {% endfor %}
         </tbody>
@@ -39,11 +44,48 @@
     </div>
 
     <div id="menu2" class="container tab-pane fade"><br>
-      <h3>Manage Images</h3>
-      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+      <div class="container mt-1">
+      <h3>Create new article</h3>
+      <input class="form-control" type="text" name="title" id="title" placeholder="Type article title here ...">
+      <br>
+      <button id="postButton" type="button" class="btn btn-primary mt-3">Post Article</button>
+      <p class="mt-2">
+          This will create an empty article which won't be visible to public yet.
+      </p>
+    </div>
     </div>
 
   </div>
 </div>
+
+<script> 
+  document.getElementById("postButton").addEventListener("click", () => {
+      data = {
+              "title": document.getElementById("title").value,
+              "content": "",
+              "hidden": true,
+              "image": ""
+          }
+      fetch("{{ url_for('create_article')}}", {
+          method: "POST",
+          body: JSON.stringify(data),
+          headers: {
+              "Content-Type": "application/json",
+          },
+      }).then(() => {
+          location.replace("{{ url_for('admin_page') }}")
+      })
+  })
+
+  function deleteArticle(id) {
+    console.log(id)
+    fetch("/api/articles/delete/" + id, {
+        method: "DELETE"
+    }).then(() => {
+        location.replace("{{ url_for('admin_page') }}")
+    })
+  }
+</script>
+
 
 {% endblock %}

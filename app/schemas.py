@@ -1,7 +1,8 @@
 from pydantic import BaseModel
-from typing import Union
+from typing import Union, Optional
 
 class Article(BaseModel):
     title: str
     content: str
-    hidden: bool
+    hidden: Optional[bool] = True
+    image: Optional[str] = ""
