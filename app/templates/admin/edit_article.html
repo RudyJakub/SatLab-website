@@ -1,4 +1,5 @@
 {% extends "admin/base.html" %} {% block content %}
+
 <div class="container mt-3">
     <form id="articleUpdateForm">
          <h4>Title</h4>
@@ -22,25 +23,28 @@
     <br>
     <p id="resp"></p>
 </div>
+
 <script>
+
    if ("{{ article.hidden }}" == "True") {
       document.getElementById("hiddenSwitch").checked = true
    } else {
       document.getElementById("hiddenSwitch").checked = false
    }
+   
    document.getElementById("currentImage").src = "{{ url_for('static', path='article_images/' )}}" + "{{ article.image }}"
+   
    function submitUsingFetch() {
       const resp = document.getElementById("resp");
       const fileInput = document.getElementById('fileInput');
       const formData = new FormData();
-      for (const file of fileInput.files) {
-         formData.append('files', file);
-      }
+      formData.append('files', fileInput.files[0])
       const myForm = document.getElementById('articleUpdateForm');
       let qs = new URLSearchParams(new FormData(myForm)).toString();
       qs += "&hidden=" + document.getElementById("hiddenSwitch").checked
-      console.log(qs)
+      qs += "&article_id=" + "{{ article.id }}"
       let opts
+
       if (fileInput.files.length === 1) {
          opts = {
             method: 'POST',
@@ -52,14 +56,12 @@
          }
       }
 
-      fetch('/api/articles/update/'+ "{{ article.id }}" + '?' + qs, opts)
+      fetch('/api/articles/update' + '?' + qs, opts)
       .then(() => {
          location.replace("{{ url_for('admin_page') }}")
       })
-      .catch(error => {
-         console.error(error);
-      });
-
    }
+
 </script>
+
 {% endblock %}

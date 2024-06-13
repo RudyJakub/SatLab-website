@@ -16,8 +16,20 @@
     <div class="container-fluid">
       <a class="navbar-brand" href="{{ url_for('admin_page') }}">Editor Panel</a>
     </div>
+    <ul class="navbar-nav">
+     <li class="nav-item" id="logoutNavItem">
+        <a class="nav-link" href="" onclick="logout()">Logout</a>
+      </li>
+    </ul>
   </nav>
     {% block content %} {% endblock %}
+    <script>
+      function logout() {
+        fetch("{{ url_for('admin_logout') }}", { method: "POST" }).then(() => {
+          location.replace("{{ url_for('admin_login_page') }}")
+        })
+      }
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>
