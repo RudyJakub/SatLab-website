@@ -1,18 +1,15 @@
 from fastapi import FastAPI, Request, UploadFile, File, Depends
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
-from sqlalchemy import text
 from database import session, engine
 from schemas import Article
 import models
-from typing import List, Optional
+from typing import List
 
 app = FastAPI()
 app.mount("/static", StaticFiles(directory="static"), name="static")
 app.templates = Jinja2Templates(directory="templates")
 models.Base.metadata.create_all(bind=engine)
-
-# session.execute(text('DROP TABLE articles;'))
 
 @app.get("/")
 async def home(request: Request):
