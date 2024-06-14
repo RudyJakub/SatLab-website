@@ -283,3 +283,34 @@
   position: absolute;
   z-index: 100;
 }
+
+/* CONTACT */
+.contact-wrapper {
+  width: 100%;
+  min-height: 50vh;
+
+
+  /* positioning children */
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 75px 25%;
+
+  background-color: #000;
+  color: #f7f7f7;
+}
+
+.contact-wrapper a {
+  padding: 15px;
+}
+
+.contact-wrapper svg {
+  width: 100px;
+  height: 100px;
+}
+
+.contact-wrapper a:hover svg {
+  fill: #000;
+}

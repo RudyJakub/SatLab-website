@@ -32,6 +32,22 @@
     color: #f7f7f7;
 }
 
+.cooperate-students {
+    width: 100%;
+    min-height: 50vh;
+
+
+    /* positioning children */
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 75px 25%;
+
+    background-color: #f7f7f7;
+}
+
 .offer-block {
     max-width: 350px;
     min-height: 45vh;
