@@ -2,13 +2,17 @@
 
 
 // config
-const bottomOffset = -200; // callable fadeIn/Out offset from bottom in px
+let bottomOffset = -170; // callable fadeIn/Out offset from bottom in px
 const fadeOffset = 5; // 10px in one direction
 
 function fade() {
     var windowBottom = $(this).scrollTop() + $(this).outerHeight();
     $(".fade").each(function() {
-
+      if($(this).is("img")) {
+        bottomOffset = 120;
+      } else {
+        bottomOffset = -350;
+      }
       // Check the location of each desired element 
       var objectBottom = $(this).offset().top + $(this).innerHeight()/2 + bottomOffset;
       var direction = $(this).attr('direction') == 'left' ? `translateX(-${fadeOffset}px)` : `translateX(${fadeOffset}px)`; //

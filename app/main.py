@@ -30,6 +30,12 @@ def about(request: Request):
         request=request, name="about.html"
     )
 
+@app.get("/cooperate")
+def about(request: Request):
+    return app.templates.TemplateResponse(
+        request=request, name="cooperate.html"
+    )
+
 @app.get("/news/{news_id}")
 async def article_page(request: Request, news_id: int):
     article = session.query(models.Article).filter(models.Article.id==news_id).first()

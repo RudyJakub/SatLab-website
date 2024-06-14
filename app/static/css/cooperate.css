@@ -1,0 +1,50 @@
+.cooperate-header {
+    width: 100%;
+    min-height: 50vh;
+    margin-top: 75px;
+
+
+    /* positioning children */
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 75px 25%;
+
+    background-color: #f7f7f7;
+}
+
+.cooperate-company {
+    width: 100%;
+    min-height: 100vh;
+
+
+    /* positioning children */
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 75px 25%;
+
+    background-color: #000;
+    color: #f7f7f7;
+}
+
+.offer-block {
+    max-width: 350px;
+    min-height: 45vh;
+
+    display: flex;
+    flex-direction: column;
+    padding: 45px 10px;
+/* 
+    border: 1px solid #f7f7f7;
+    border-radius: 15px; */
+}
+
+.offer-block h1 {
+    border-bottom: 1px solid #f7f7f7;
+    padding-bottom: 25px;
+}
