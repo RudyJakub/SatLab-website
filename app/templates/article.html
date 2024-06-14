@@ -1,12 +1,17 @@
 {% extends "base.html" %} {% block content %}
 
-<section class="mission-container">
-    <div class="text-wrapper">
-      <h1 class="fade text-[45px] xl:text-[75px]">{{ article.title }}</h1>
-      <p class="fade text-16px lg:text-[25px] xl-[30px] leading-relaxed" direction="left">
+<section class="article-container flex flex-col ">
+  <div class="article-hero relative w-full flex flex-col">
+    <h1 class="fade text-[45px] xl:text-[75px] font-extrabold">{{ article.title }}</h1>
+    <h2 class="fade text-[28px]">{{ article.created_at }}</h2>
+    <img class="absolute" src="https://images.unsplash.com/photo-1656464868371-602be27fd4c2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&q=80"    />
+  </div>
+    <a href="/#news"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></a>
+    <div class="wrapper w-full">
+      <p class="fade mt-24 text-[16px] lg:text-[25px] xl-[30px] leading-relaxed" direction="left">
         {{ article.content }}
       </p>
     </div>
 </section>
-  
+
 {% endblock %}

@@ -2,7 +2,7 @@
 
 
 // config
-const bottomOffset = 200; // callable fadeIn/Out offset from bottom in px
+const bottomOffset = -200; // callable fadeIn/Out offset from bottom in px
 const fadeOffset = 10; // 10px in one direction
 
 function fade() {

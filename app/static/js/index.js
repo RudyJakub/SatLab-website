@@ -24,4 +24,8 @@ $(window).on("load",function() {
         window.location.hash = `#slide-${current_slide}`;
         $(`.slider-nav a:nth-child(${current_slide})`).css("opacity", "1");
     })
+
+    $("#menu-btns ul li a").on("click", () => {
+        $("#burger").prop("checked", false);
+    })
 });

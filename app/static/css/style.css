@@ -22,12 +22,16 @@ html {
   font-family: "Kanit", sans-serif;
 }
 
+a, h1, h2, p {
+  zoom: 50%;
+}
+
 /* Menu style */
 .menu {
   background: rgb(2, 3, 4);
   color: #f7f7f7;
   width: 100%;
-  height: 150px;
+  height: 75px;
   padding: 45px 10%;
 
   /* Positioning children */
@@ -43,7 +47,7 @@ html {
 }
 
 .menu img {
-  max-height: 75px;
+  max-height: 45px;
   z-index: 7;
 }
 
@@ -136,7 +140,7 @@ html {
   /* backdrop-filter: blur(5px); */
 
   position: fixed;
-  top: 0;
+  top: 0px;
   left: 0;
 
   width: 100%;
@@ -153,7 +157,7 @@ html {
 .menu input ~ nav > ul {
   text-align: center;
   position: absolute;
-  top: 200px;
+  top: 30px;
   left: 20%;
   right: 20%;
 }
@@ -186,10 +190,10 @@ html {
 }
 
 .menu input:checked ~ nav {
-  height: calc(100% - 120px);
+  height: 100%;
   transition-delay: 0s;
 
-  top: 120px;
+  top: 80px;
   overflow-y: scroll;
   -ms-overflow-style: none; /* Hide scrollbar IE and Edge */
   scrollbar-width: none; /* Hide scrollbar Firefox */
