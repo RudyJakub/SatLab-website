@@ -79,7 +79,7 @@
 
   function deleteArticle(id) {
     console.log(id)
-    fetch("/api/articles/delete/" + id, {
+    fetch("/api/articles/delete?article_id=" + id, {
         method: "DELETE"
     }).then(() => {
         location.replace("{{ url_for('admin_page') }}")
