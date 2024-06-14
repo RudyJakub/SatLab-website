@@ -3,6 +3,8 @@
 <div class="container-sm mt-5">
     <h2>Log into the Editor Panel</h2>
     <div class="form-group mt-3">
+      <input type="text" class="form-control" id="username" placeholder="Username">
+      <br>
       <input type="password" class="form-control" id="password" placeholder="Password">
     </div>
     <button id="loginBtn" class="btn btn-primary mt-3">Log in</button>
@@ -12,10 +14,12 @@
 <script>
       document.getElementById("logoutNavItem").innerHTML = ''
       document.getElementById("loginBtn").addEventListener("click", () => {
+        const username = document.getElementById("username").value      
         const password = document.getElementById("password").value
         fetch("{{ url_for('admin_login')}}", {
           method: "POST",
           body: JSON.stringify({
+            username: username,
             password: password
           }),
           headers: {
@@ -25,8 +29,9 @@
           if (r.status === 200) {
             location.replace("{{ url_for('admin_page') }}")
           } else {
+            document.getElementById("username").value = ""
             document.getElementById("password").value = ""
-            document.getElementById("log").innerText = "Invalid Password"
+            document.getElementById("log").innerText = "Invalid Username or Password"
           }
         })
       })

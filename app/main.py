@@ -3,7 +3,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.responses import RedirectResponse, Response
 from fastapi.templating import Jinja2Templates
 from database import session, engine
-from schemas import Article, LoginCredentials
+from schemas import Article, User
 import models
 from typing import List
 import uuid
@@ -14,8 +14,7 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 app.templates = Jinja2Templates(directory="templates")
 models.Base.metadata.create_all(bind=engine)
 
-ADMIN_SESSIONS = {}
-HASHED_PASSWORD = '7ae8b0fd49a7f2965934ee8c907d3a67e8ec9c8e656cf7e89b094a2cbe19e7c9'
+USER_SESSIONS = {}
 
 @app.get("/")
 async def home(request: Request):
@@ -31,7 +30,7 @@ def about(request: Request):
     )
 
 @app.get("/cooperate")
-def about(request: Request):
+def cooperate(request: Request):
     return app.templates.TemplateResponse(
         request=request, name="cooperate.html"
     )
@@ -49,7 +48,7 @@ async def article_page(request: Request, news_id: int):
 @app.get("/admin")
 async def admin_page(request: Request):
     session_id = request.cookies.get("Authorization")
-    if not session_id or session_id not in ADMIN_SESSIONS or ADMIN_SESSIONS[session_id] != "admin":
+    if not session_id or session_id not in USER_SESSIONS or USER_SESSIONS[session_id] != "satlab_admin":
         return RedirectResponse("/admin/login")
     all_articles = session.query(models.Article).all()
     return app.templates.TemplateResponse(
@@ -65,7 +64,7 @@ async def admin_login_page(request: Request):
 @app.get("/admin/edit-article/{article_id}")
 async def edit_article_page(request: Request, article_id: int):
     session_id = request.cookies.get("Authorization")
-    if not session_id or session_id not in ADMIN_SESSIONS or ADMIN_SESSIONS[session_id] != "admin":
+    if not session_id or session_id not in USER_SESSIONS or USER_SESSIONS[session_id] != "satlab_admin":
         return RedirectResponse("/admin/login")
     article = session.query(models.Article).filter(models.Article.id==article_id).first()
     return app.templates.TemplateResponse(
@@ -73,11 +72,13 @@ async def edit_article_page(request: Request, article_id: int):
     )
 
 @app.post("/api/admin/login")
-def admin_login(credentials: LoginCredentials):
-    password_hash = hashlib.sha256(credentials.password.encode("utf-8")).hexdigest()
-    if password_hash==HASHED_PASSWORD:
+def admin_login(user: User):
+    current_user = session.query(models.User).filter(models.User.username==user.username).first()
+    password_hash = hashlib.sha256(user.password.encode("utf-8")).hexdigest()
+    if current_user is not None and password_hash==current_user.password:
         session_id = str(uuid.uuid4())
-        ADMIN_SESSIONS[session_id] = "admin"
+        print(current_user.username)
+        USER_SESSIONS[session_id] = current_user.username
         response = Response(status_code=status.HTTP_200_OK)
         response.set_cookie(key="Authorization", value=session_id)
         return response
@@ -88,7 +89,7 @@ def admin_login(credentials: LoginCredentials):
     
 @app.post("/api/admin/logout")
 async def admin_logout(request: Request):
-    del ADMIN_SESSIONS[request.cookies.get("Authorization")]
+    del USER_SESSIONS[request.cookies.get("Authorization")]
     response = Response(status_code=status.HTTP_200_OK)
     return response
 
@@ -98,7 +99,7 @@ async def admin_logout(request: Request):
 @app.post("/api/articles")
 async def create_article(request: Request, article: Article):
     session_id = request.cookies.get("Authorization")
-    if not session_id or session_id not in ADMIN_SESSIONS or ADMIN_SESSIONS[session_id] != "admin":
+    if not session_id or session_id not in USER_SESSIONS or USER_SESSIONS[session_id] != "satlab_admin":
         return RedirectResponse("/admin/login")
     new_article = models.Article(title=article.title, content=article.content, hidden=article.hidden, image="")
     session.add(new_article)
@@ -108,7 +109,7 @@ async def create_article(request: Request, article: Article):
 @app.delete("/api/articles/delete")
 async def delete_article(request: Request, article_id: int):
     session_id = request.cookies.get("Authorization")
-    if not session_id or session_id not in ADMIN_SESSIONS or ADMIN_SESSIONS[session_id] != "admin":
+    if not session_id or session_id not in USER_SESSIONS or USER_SESSIONS[session_id] != "satlab_admin":
         return RedirectResponse("/admin/login")
     session.query(models.Article).filter(models.Article.id==article_id).delete()
     session.commit()
@@ -118,7 +119,7 @@ async def delete_article(request: Request, article_id: int):
 @app.post("/api/articles/update")
 def update_article(request: Request, article_id: int, article: Article = Depends(), files: List[UploadFile] = File(None)):
     session_id = request.cookies.get("Authorization")
-    if not session_id or session_id not in ADMIN_SESSIONS or ADMIN_SESSIONS[session_id] != "admin":
+    if not session_id or session_id not in USER_SESSIONS or USER_SESSIONS[session_id] != "satlab_admin":
         return RedirectResponse("/admin/login")
     if files:
         file = files[0]

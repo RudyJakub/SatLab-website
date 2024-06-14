@@ -7,5 +7,9 @@ class Article(BaseModel):
     hidden: Optional[bool] = True
     image: Optional[str] = ""
 
+class User(BaseModel):
+    username: str
+    password: str
+
 class LoginCredentials(BaseModel):
     password: str

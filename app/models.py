@@ -13,3 +13,11 @@ class Article(Base):
     updated_at = Column(DateTime, default=datetime.now, onupdate=datetime.now)
     image = Column(String(255), default="default.png")
     # zdjęcia + inny content
+
+class User(Base):
+    __tablename__ = "users"
+    
+    id = Column(Integer, primary_key=True)
+    username = Column(String(255), unique=True)
+    password = Column(String(255))
+    # zdjęcia + inny content
