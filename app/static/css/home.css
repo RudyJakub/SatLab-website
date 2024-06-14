@@ -11,9 +11,10 @@
 
 /* Hero styles here */
 .hero {
-  height: 100vh;
+  margin-top: 75px;
+  min-height: 100vh;
   width: 100%;
-  padding: 20px 10rem;
+  padding: 20px;
 
   /* Positioning elements */
   display: flex;
@@ -40,9 +41,7 @@
 /* Hero Buttons */
 .hero .btn-container {
   width: 100%;
-  position: absolute;
-  bottom: 0;
-  left: 0;
+  margin-top: 45px;
   height: 75px;
 
   /* positioning elements */
@@ -50,13 +49,12 @@
   flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
-  padding: 0 20% 175px 20%;
 }
 
 .hero-btn {
   border-top: 2px solid #f7f7f7;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 3px;
+  padding-bottom: 3px;
 
   transition: 0.2s ease;
   white-space: nowrap;
@@ -68,8 +66,8 @@
   background-color: #f7f7f7;
   color: #2ab5b6;
   border-top: 2px solid #f7f7f7;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 3px;
+  padding-bottom: 3px;
 }
 
 /* MISSION CONTAIENR STYLES */
@@ -278,12 +276,10 @@
 }
 
 
-/* @media (max-width: 768px) {
-  .slider-cell {
-    width: 100% !important;
-    height: 50vh;
-    background: #000;
-    counter-increment: gallery-cell;
-    position: relative;
-  }
-} */
+.slider-cell a {
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: absolute;
+  z-index: 100;
+}
