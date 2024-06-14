@@ -94,7 +94,7 @@
 </section>
 
 <!-- SLIDER THIN NO1 -->
-<section id="news" class="th-carousel p-0 md:p-48 bg-[#f7f7f7] overflow-hidden">
+<section id="news" class="th-carousel p-2 md:p-48 bg-[#f7f7f7] overflow-hidden">
   <div class="py-12">
     <span class="fade text-3xl">NIE PRZEGAP</span>
     <h2 class="fade text-6xl md:text-8xl">NEWSY OD <span class="text-[#2ab5b6]">SATLABA</span></h2>
@@ -121,7 +121,7 @@
 </section>
 
 <!-- CONTACT -->
-<section id="contact" class="contact-wrapper p-0 md:p-48 overflow-hidden">
+<section id="contact" class="contact-wrapper p-2 md:p-48 overflow-hidden">
   <div class="py-12">
     <h2 class="fade text-6xl md:text-8xl">Skontaktuj się z nami!</h2>
   </div>
@@ -199,7 +199,7 @@
 </section>
 
 <!-- SEKCJE -->
-<section id="sections" class="th-carousel p-0 md:p-48 bg-[#f7f7f7] overflow-hidden">
+<section id="sections" class="th-carousel p-2 md:p-48 bg-[#f7f7f7] overflow-hidden">
   <div class="py-12">
     <h2 class="fade text-6xl md:text-8xl">SEKCJE <span class="text-[#2ab5b6]">W SATLABIE</span></h2>
   </div>
@@ -223,5 +223,18 @@
     </div>
   </div>
 </section>
+
+<!-- CZŁONKOWIE -->
+<div id="team" class="th-carousel p-2 md:p-48 bg-[#000] overflow-hidden">
+  <div class="py-12">
+    <h2 class="fade text-6xl md:text-8xl text-[#f7f7f7]">ZESPÓŁ <span class="text-[#2ab5b6]">SATLABA</span></h2>
+  </div>
+  <div class="text-wrapper">
+      <p class="fade text-16px lg:text-[32px] xl-[45px] leading-relaxed max-w-[1250px] text-[#f7f7f7]" direction="left">
+        Marzymy o tym, by misje kosmiczne na AGH stały się czymś normalnym, a nie jednorazowymi przygodami. Budujemy w tym celu odpowiednią infrastrukturę, laboratoria oraz przede wszystkim gromadzimy niezbędny know-how. Obecnie posiadamy dwie zaplanowane, w pełni sfinansowane misje kosmiczne!
+      </p>
+      <img src="{{ url_for('static', path='img/students.png') }}" />
+  </div>
+</div>
 
 {% endblock %}
